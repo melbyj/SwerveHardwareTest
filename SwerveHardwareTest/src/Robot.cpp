@@ -28,7 +28,7 @@ void Robot::TeleopInit() {
 
 	testTimer.Reset();
 	testTimer.Start();
-	timeToRunTests = 10;
+	timeToRunTests = 20;
 	currentTime = 0;
 	testFileFLD.open("testDataFLD.csv");
 	testFileFRD.open("testDataFRD.csv");
@@ -71,6 +71,28 @@ void Robot::TeleopPeriodic() {
 		RobotMap::swerveSubsystemFRDriveTalon->Set(ControlMode::PercentOutput, .6666);
 		RobotMap::swerveSubsystemBLDriveTalon->Set(ControlMode::PercentOutput, .6666);
 		RobotMap::swerveSubsystemBRDriveTalon->Set(ControlMode::PercentOutput, .6666);
+	}
+
+	if(currentTime >= 10) {
+		RobotMap::swerveSubsystemFLDriveTalon->Set(ControlMode::PercentOutput, -.25);
+		RobotMap::swerveSubsystemFRDriveTalon->Set(ControlMode::PercentOutput, -.25);
+		RobotMap::swerveSubsystemBLDriveTalon->Set(ControlMode::PercentOutput, -.25);
+		RobotMap::swerveSubsystemBRDriveTalon->Set(ControlMode::PercentOutput, -.25);
+		RobotMap::swerveSubsystemFLDriveTalon->Set(ControlMode::PercentOutput, -.25);
+		RobotMap::swerveSubsystemFRDriveTalon->Set(ControlMode::PercentOutput, -.25);
+		RobotMap::swerveSubsystemBLDriveTalon->Set(ControlMode::PercentOutput, -.25);
+		RobotMap::swerveSubsystemBRDriveTalon->Set(ControlMode::PercentOutput, -.25);
+	}
+
+	if(currentTime >= 15) {
+		RobotMap::swerveSubsystemFLDriveTalon->Set(ControlMode::PercentOutput, -.6666);
+		RobotMap::swerveSubsystemFRDriveTalon->Set(ControlMode::PercentOutput, -.6666);
+		RobotMap::swerveSubsystemBLDriveTalon->Set(ControlMode::PercentOutput, -.6666);
+		RobotMap::swerveSubsystemBRDriveTalon->Set(ControlMode::PercentOutput, -.6666);
+		RobotMap::swerveSubsystemFLDriveTalon->Set(ControlMode::PercentOutput, -.6666);
+		RobotMap::swerveSubsystemFRDriveTalon->Set(ControlMode::PercentOutput, -.6666);
+		RobotMap::swerveSubsystemBLDriveTalon->Set(ControlMode::PercentOutput, -.6666);
+		RobotMap::swerveSubsystemBRDriveTalon->Set(ControlMode::PercentOutput, -.6666);
 	}
 
 	if(currentTime <= timeToRunTests) {
