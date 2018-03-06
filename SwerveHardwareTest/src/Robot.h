@@ -19,10 +19,14 @@ private:
 	frc::Timer testTimer;
 	double timeToRunTests;
 	double currentTime;
-	std::ofstream testFileFL;
-	std::ofstream testFileFR;
-	std::ofstream testFileBL;
-	std::ofstream testFileBR;
+	std::ofstream testFileFLD;
+	std::ofstream testFileFRD;
+	std::ofstream testFileBLD;
+	std::ofstream testFileBRD;
+	std::ofstream testFileFLR;
+	std::ofstream testFileFRR;
+	std::ofstream testFileBLR;
+	std::ofstream testFileBRR;
 };
 
 #endif

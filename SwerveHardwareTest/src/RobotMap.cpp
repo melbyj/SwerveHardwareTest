@@ -25,6 +25,8 @@ void RobotMap::init() {
 
 	pdp.reset(new frc::PowerDistributionPanel());
 
+
+	//DRIVE TALONS
 	swerveSubsystemFLDriveTalon->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder, 0, 10);
 	swerveSubsystemFRDriveTalon->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder, 0, 10);
 	swerveSubsystemBLDriveTalon->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder, 0, 10);
@@ -55,4 +57,34 @@ void RobotMap::init() {
 	swerveSubsystemBLDriveTalon->EnableVoltageCompensation(true);
 	swerveSubsystemBRDriveTalon->EnableVoltageCompensation(true);
 
+	//ROTATION TALONS
+	swerveSubsystemFLRotTalon->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Relative, 0, 10);
+	swerveSubsystemFRRotTalon->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Relative, 0, 10);
+	swerveSubsystemBLRotTalon->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Relative, 0, 10);
+	swerveSubsystemBRRotTalon->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Relative, 0, 10);
+
+	swerveSubsystemFLRotTalon->SetSelectedSensorPosition(0, 0, 10);
+	swerveSubsystemFRRotTalon->SetSelectedSensorPosition(0, 0, 10);
+	swerveSubsystemBLRotTalon->SetSelectedSensorPosition(0, 0, 10);
+	swerveSubsystemBRRotTalon->SetSelectedSensorPosition(0, 0, 10);
+
+	swerveSubsystemFLRotTalon->SetSensorPhase(false);
+	swerveSubsystemFRRotTalon->SetSensorPhase(false);
+	swerveSubsystemBLRotTalon->SetSensorPhase(false);
+	swerveSubsystemBRRotTalon->SetSensorPhase(false);
+
+	swerveSubsystemFLRotTalon->SetInverted(true);
+	swerveSubsystemFRRotTalon->SetInverted(true);
+	swerveSubsystemBLRotTalon->SetInverted(true);
+	swerveSubsystemBRRotTalon->SetInverted(true);
+
+	swerveSubsystemFLRotTalon->ConfigVoltageCompSaturation(12, 10);
+	swerveSubsystemFRRotTalon->ConfigVoltageCompSaturation(12, 10);
+	swerveSubsystemBLRotTalon->ConfigVoltageCompSaturation(12, 10);
+	swerveSubsystemBRRotTalon->ConfigVoltageCompSaturation(12, 10);
+
+	swerveSubsystemFLRotTalon->EnableVoltageCompensation(true);
+	swerveSubsystemFRRotTalon->EnableVoltageCompensation(true);
+	swerveSubsystemBLRotTalon->EnableVoltageCompensation(true);
+	swerveSubsystemBRRotTalon->EnableVoltageCompensation(true);
 }
