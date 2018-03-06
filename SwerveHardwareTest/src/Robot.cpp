@@ -30,6 +30,7 @@ void Robot::TeleopInit() {
 	testTimer.Start();
 	timeToRunTests = 20;
 	currentTime = 0;
+	currentSpeed = .25;
 	testFileFLD.open("testDataFLD.csv");
 	testFileFRD.open("testDataFRD.csv");
 	testFileBLD.open("testDataBLD.csv");
@@ -47,14 +48,14 @@ void Robot::TeleopInit() {
 	testFileBLR << "Time, Commanded Voltage, Talon Current, Encoder Position, Encoder Velocity" << "\n";
 	testFileBRR << "Time, Commanded Voltage, Talon Current, Encoder Position, Encoder Velocity" << "\n";
 
-	RobotMap::swerveSubsystemFLDriveTalon->Set(ControlMode::PercentOutput, .25);
-	RobotMap::swerveSubsystemFRDriveTalon->Set(ControlMode::PercentOutput, .25);
-	RobotMap::swerveSubsystemBLDriveTalon->Set(ControlMode::PercentOutput, .25);
-	RobotMap::swerveSubsystemBRDriveTalon->Set(ControlMode::PercentOutput, .25);
-	RobotMap::swerveSubsystemFLRotTalon->Set(ControlMode::PercentOutput, .25);
-	RobotMap::swerveSubsystemFRRotTalon->Set(ControlMode::PercentOutput, .25);
-	RobotMap::swerveSubsystemBLRotTalon->Set(ControlMode::PercentOutput, .25);
-	RobotMap::swerveSubsystemBRRotTalon->Set(ControlMode::PercentOutput, .25);
+	RobotMap::swerveSubsystemFLDriveTalon->Set(ControlMode::PercentOutput, currentSpeed);
+	RobotMap::swerveSubsystemFRDriveTalon->Set(ControlMode::PercentOutput, currentSpeed);
+	RobotMap::swerveSubsystemBLDriveTalon->Set(ControlMode::PercentOutput, currentSpeed);
+	RobotMap::swerveSubsystemBRDriveTalon->Set(ControlMode::PercentOutput, currentSpeed);
+	RobotMap::swerveSubsystemFLRotTalon->Set(ControlMode::PercentOutput, currentSpeed);
+	RobotMap::swerveSubsystemFRRotTalon->Set(ControlMode::PercentOutput, currentSpeed);
+	RobotMap::swerveSubsystemBLRotTalon->Set(ControlMode::PercentOutput, currentSpeed);
+	RobotMap::swerveSubsystemBRRotTalon->Set(ControlMode::PercentOutput, currentSpeed);
 }
 
 void Robot::TeleopPeriodic() {
@@ -62,38 +63,26 @@ void Robot::TeleopPeriodic() {
 
 	currentTime = testTimer.Get();
 
-	if(currentTime >= 15) {
-		RobotMap::swerveSubsystemFLDriveTalon->Set(ControlMode::PercentOutput, -.6666);
-		RobotMap::swerveSubsystemFRDriveTalon->Set(ControlMode::PercentOutput, -.6666);
-		RobotMap::swerveSubsystemBLDriveTalon->Set(ControlMode::PercentOutput, -.6666);
-		RobotMap::swerveSubsystemBRDriveTalon->Set(ControlMode::PercentOutput, -.6666);
-		RobotMap::swerveSubsystemFLDriveTalon->Set(ControlMode::PercentOutput, -.6666);
-		RobotMap::swerveSubsystemFRDriveTalon->Set(ControlMode::PercentOutput, -.6666);
-		RobotMap::swerveSubsystemBLDriveTalon->Set(ControlMode::PercentOutput, -.6666);
-		RobotMap::swerveSubsystemBRDriveTalon->Set(ControlMode::PercentOutput, -.6666);
+	if(currentTime >= 5) {
+		currentSpeed = .6666;
 	}
 
 	if(currentTime >= 10) {
-		RobotMap::swerveSubsystemFLDriveTalon->Set(ControlMode::PercentOutput, -.25);
-		RobotMap::swerveSubsystemFRDriveTalon->Set(ControlMode::PercentOutput, -.25);
-		RobotMap::swerveSubsystemBLDriveTalon->Set(ControlMode::PercentOutput, -.25);
-		RobotMap::swerveSubsystemBRDriveTalon->Set(ControlMode::PercentOutput, -.25);
-		RobotMap::swerveSubsystemFLDriveTalon->Set(ControlMode::PercentOutput, -.25);
-		RobotMap::swerveSubsystemFRDriveTalon->Set(ControlMode::PercentOutput, -.25);
-		RobotMap::swerveSubsystemBLDriveTalon->Set(ControlMode::PercentOutput, -.25);
-		RobotMap::swerveSubsystemBRDriveTalon->Set(ControlMode::PercentOutput, -.25);
+		currentSpeed = -.25;
 	}
 
-	if(currentTime >= 5) {
-		RobotMap::swerveSubsystemFLDriveTalon->Set(ControlMode::PercentOutput, .6666);
-		RobotMap::swerveSubsystemFRDriveTalon->Set(ControlMode::PercentOutput, .6666);
-		RobotMap::swerveSubsystemBLDriveTalon->Set(ControlMode::PercentOutput, .6666);
-		RobotMap::swerveSubsystemBRDriveTalon->Set(ControlMode::PercentOutput, .6666);
-		RobotMap::swerveSubsystemFLDriveTalon->Set(ControlMode::PercentOutput, .6666);
-		RobotMap::swerveSubsystemFRDriveTalon->Set(ControlMode::PercentOutput, .6666);
-		RobotMap::swerveSubsystemBLDriveTalon->Set(ControlMode::PercentOutput, .6666);
-		RobotMap::swerveSubsystemBRDriveTalon->Set(ControlMode::PercentOutput, .6666);
+	if(currentTime >= 15) {
+		currentSpeed = -.6666;
 	}
+
+	RobotMap::swerveSubsystemFLDriveTalon->Set(ControlMode::PercentOutput, currentSpeed);
+	RobotMap::swerveSubsystemFRDriveTalon->Set(ControlMode::PercentOutput, currentSpeed);
+	RobotMap::swerveSubsystemBLDriveTalon->Set(ControlMode::PercentOutput, currentSpeed);
+	RobotMap::swerveSubsystemBRDriveTalon->Set(ControlMode::PercentOutput, currentSpeed);
+	RobotMap::swerveSubsystemFLDriveTalon->Set(ControlMode::PercentOutput, currentSpeed);
+	RobotMap::swerveSubsystemFRDriveTalon->Set(ControlMode::PercentOutput, currentSpeed);
+	RobotMap::swerveSubsystemBLDriveTalon->Set(ControlMode::PercentOutput, currentSpeed);
+	RobotMap::swerveSubsystemBRDriveTalon->Set(ControlMode::PercentOutput, currentSpeed);
 
 	if(currentTime <= timeToRunTests) {
 		//Drive Talons

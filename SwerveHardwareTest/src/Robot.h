@@ -19,6 +19,7 @@ private:
 	frc::Timer testTimer;
 	double timeToRunTests;
 	double currentTime;
+	double currentSpeed;
 	std::ofstream testFileFLD;
 	std::ofstream testFileFRD;
 	std::ofstream testFileBLD;
