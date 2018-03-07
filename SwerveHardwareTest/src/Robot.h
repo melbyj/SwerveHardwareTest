@@ -20,14 +20,17 @@ private:
 	double timeToRunTests;
 	double currentTime;
 	double currentSpeed;
-	std::ofstream testFileFLD;
+	std::string m_OutputString;
+	std::ofstream m_TestFile;
+	
+	/*std::ofstream testFileFLD;
 	std::ofstream testFileFRD;
 	std::ofstream testFileBLD;
 	std::ofstream testFileBRD;
 	std::ofstream testFileFLR;
 	std::ofstream testFileFRR;
 	std::ofstream testFileBLR;
-	std::ofstream testFileBRR;
+	std::ofstream testFileBRR;*/
 };
 
 #endif
